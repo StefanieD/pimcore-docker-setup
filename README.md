@@ -7,10 +7,30 @@ Simple Docker setup for pimcore local development
 * run `docker-compose up -d`
 
 ## Install Pimcore within container
+After starting the container some additional manual steps are needed.
+
+Go into the PHP container with
 * run `docker-compose exec php bash`
-* install pimcore (see https://pimcore.com/de/download)
-* i.e. with composer then go to pimcore directory with `cd pimcore`
-* run `COMPOSER_MEMORY_LIMIT=-1 composer create-project pimcore/demo-basic-twig .`
+
+#### Install pimcore (see https://pimcore.com/de/download)
+* run `COMPOSER_MEMORY_LIMIT=-1 composer create-project pimcore/demo-basic-twig pimcore`
+
+The pimcore project structure will be created in the directory pimcore
+
+Change owner for calling next commands.
+
+* run `chown -R 1000:1000 pimcore`
+
+The next command creates pimcore with an initial admin user and our defined database properties.
+
+* run `cd pimcore && COMPOSER_MEMORY_LIMIT=-1 ./vendor/bin/pimcore-install  
+--admin-username=admin --admin-password=admin --mysql-host-socket=mysql 
+--mysql-username=pimcore --mysql-password=pimcore --mysql-database=pimcore`
+
+
+* run `chown -R 1000:1000 var`
+* run `bin/console assets:install`
+
 
 ## Access Pimcore 
-You can access pimcore frontend at http://localhost:8000 and admin at http://localhost:8000/admin
+You can now access pimcore frontend at http://localhost:8080 and admin at http://localhost:8080/admin
