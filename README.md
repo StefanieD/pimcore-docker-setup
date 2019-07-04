@@ -25,7 +25,7 @@ The next command creates pimcore with an initial admin user and our defined data
 
 * run `cd pimcore && COMPOSER_MEMORY_LIMIT=-1 ./vendor/bin/pimcore-install  
 --admin-username=admin --admin-password=admin --mysql-host-socket=mysql 
---mysql-username=pimcore --mysql-password=pimcore --mysql-database=pimcore`
+--mysql-username=pimcore --mysql-password=pimcore --mysql-database=pimcore --no-interaction`
 
 
 * run `chown -R 1000:1000 var`
@@ -34,3 +34,25 @@ The next command creates pimcore with an initial admin user and our defined data
 
 ## Access Pimcore 
 You can now access pimcore frontend at http://localhost:8080 and admin at http://localhost:8080/admin
+
+## Troubleshooting
+
+If you're getting the following error with Pimcore 6
+
+```* Warning: Declaration of Pimcore\Bundle\CoreBundle\EventListener\LegacyTemplateListener::onKernelView(Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent $event) should be compatible with Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener::onKernelView(Symfony\Component\HttpKernel\Event\KernelEvent $event)```
+
+You can fix it with changing the `pimcore/composer.json` file and require and older version of `sensio/framework-extra-bundle`
+
+The require part should look like this:
+
+```json
+"require": {
+    "php": ">=7.2",
+    "wikimedia/composer-merge-plugin": "^1.4",
+    "pimcore/pimcore": "~6.0.0",
+    "sensio/framework-extra-bundle": "5.3.1"
+  },
+
+```
+
+Then run `composer update` and the `pimcore-install` script again. 
