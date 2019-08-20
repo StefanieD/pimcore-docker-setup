@@ -1,5 +1,5 @@
 # pimcore-docker-setup
-Simple Docker setup for pimcore local development
+Simple Docker setup for pimcore local development. This will install **Pimcore 6.1.0** (as of August 19).
 
 ## Run Docker
 * Go to root directory
