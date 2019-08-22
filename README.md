@@ -29,7 +29,7 @@ The next command creates pimcore with an initial admin user and our defined data
 
 
 * run `chown -R 1000:1000 var`
-* run `php bin/console assets:install`
+* run `php bin/console assets:install web`
 
 
 ## Access Pimcore 
