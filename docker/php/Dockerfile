@@ -23,7 +23,6 @@ RUN apt-get install -y \
 RUN docker-php-ext-install -j$(nproc) \
         zip \
         exif \
-        gd \
         bcmath \
         intl \
         pcntl \
@@ -35,6 +34,12 @@ RUN docker-php-ext-install -j$(nproc) \
         soap \
         opcache \
         iconv
+
+# Install Imagick
+RUN apt-get update && apt-get install -y \
+    libmagickwand-dev --no-install-recommends \
+    && pecl install imagick \
+	&& docker-php-ext-enable imagick
 
 # Install Composer
 RUN echo "Install Composer"

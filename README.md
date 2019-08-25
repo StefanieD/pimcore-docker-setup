@@ -1,6 +1,8 @@
 # pimcore-docker-setup
 Simple Docker setup for pimcore local development. This will install **Pimcore 6.1.0** (as of August 19).
 
+You can also read a short summary here https://blog.stefaniedrost.com/schnelles-pimcore-setup-mit-docker/
+
 ## Run Docker
 * Go to root directory
 * run `docker-compose build`
@@ -31,6 +33,14 @@ The next command creates pimcore with an initial admin user and our defined data
 * run `chown -R 1000:1000 var`
 * run `php bin/console assets:install web`
 
+
+## Generate Thumbnails
+
+Pimcore offers a lot of custom commmands. For generating thumbnails run
+`php bin/console pimcore:thumbnails:image` in you php container.
+
+To preview images in admin panel, make sure you have the right permissions. 
+As a workaround set `chmod -R 777 web/var`
 
 ## Access Pimcore 
 You can now access pimcore frontend at http://localhost:8080 and admin at http://localhost:8080/admin
