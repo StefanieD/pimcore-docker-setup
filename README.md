@@ -26,8 +26,8 @@ Change owner for calling next commands.
 
 The next command creates pimcore with an initial admin user and our defined database properties.
 
-* run `cd pimcore && COMPOSER_MEMORY_LIMIT=-1 ./vendor/bin/pimcore-install \
---admin-username=admin --admin-password=admin --mysql-host-socket=mysql  \
+* run `cd pimcore && COMPOSER_MEMORY_LIMIT=-1 ./vendor/bin/pimcore-install
+--admin-username=admin --admin-password=admin --mysql-host-socket=mysql
 --mysql-username=pimcore --mysql-password=pimcore --mysql-database=pimcore --no-interaction`
 
 
