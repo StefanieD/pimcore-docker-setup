@@ -41,7 +41,7 @@ Pimcore offers a lot of custom commmands. For generating thumbnails run
 `php bin/console pimcore:thumbnails:image` in you php container.
 
 To preview images in admin panel, make sure you have the right permissions. 
-As a workaround set `chmod -R 777 web/var`
+As a workaround set `chmod -R 777 web/var` or `chmod -R 777 var`
 
 ## Access Pimcore 
 You can now access pimcore frontend at http://localhost:8080 and admin at http://localhost:8080/admin
