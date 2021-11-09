@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.4-fpm
 
 # install git
 RUN apt-get update && \
@@ -7,7 +7,7 @@ RUN apt-get update && \
 #install some base extensions
 RUN apt-get install -y \
         zlib1g-dev \
-        zip \
+        libzip-dev \
         libpng-dev \
         exiftool \
         libfreetype6-dev \
@@ -18,7 +18,8 @@ RUN apt-get install -y \
         libxpm-dev \
         libvpx-dev \
         mariadb-client \
-        libxml2-dev
+        libxml2-dev \
+        libonig-dev
 
 RUN docker-php-ext-install -j$(nproc) \
         zip \
